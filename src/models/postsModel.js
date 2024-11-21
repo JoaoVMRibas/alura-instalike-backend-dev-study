@@ -8,7 +8,7 @@ export async function listAllPosts(){
     return collection.find().toArray();
 }
 
-export async function createNewPost(newPost) {
+export async function insertNewPost(newPost) {
     const db = connection.db("imersao-instabytes");
     const collection = db.collection("posts");
     return collection.insertOne(newPost);
