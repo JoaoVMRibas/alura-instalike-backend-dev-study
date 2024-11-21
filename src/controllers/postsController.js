@@ -1,11 +1,17 @@
-import { getAllPosts } from "../models/postsModel.js";
+import { listAllPosts, createNewPost } from "../models/postsModel.js";
 
-export async function listAllPosts(req, res) {
-    const posts = await getAllPosts();
+export async function getAllPosts(req, res) {
+    const posts = await listAllPosts();
     res.status(200).json(posts)
 }
 
-/* export async function getPost(req, res) {  
-    const index = searchPostsByID(req.params.id);
-    res.status(200).json(posts[index]);
-} */
+export async function postNewPost(req, res) {
+    const newPost = req.body;
+    try{
+        const createdPost = await createNewPost(newPost);
+        res.status(200).json(createdPost);
+    } catch(error){
+        console.error(error.message);
+        res.status(500).json({"Error": "Request failed."});
+    }
+}
