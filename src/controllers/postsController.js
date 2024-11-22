@@ -45,6 +45,7 @@ export async function updateNewPost(req, res) {
     };
     try{
         const updatedPost = await updatePost(id, post);
+        res.status(200).json(updatedPost);
     }catch(error){
         console.error(erro.message);
         res.status(500).json({"Erro":"Falha na requisição"});
