@@ -1,6 +1,6 @@
 import fs from "fs";
 import { listAllPosts, insertNewPost, updatePost } from "../models/postsModel.js";
-import { generateDescriptionWithGemini } from "../services/geminiService.js";
+import generateDescriptionWithGemini from "../services/geminiService.js";
 
 export async function getAllPosts(req, res) {
     const posts = await listAllPosts();
